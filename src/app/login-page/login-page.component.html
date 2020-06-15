@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center">
+  <div class="col-md-6 border mt-5 bg-light">
+    <h1>Login</h1>
+    <hr><br>
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
+      <div class="form-group">
+        <label for="username">Usuário</label>
+        <input [(ngModel)]="user.username" name="username" type="username" required class="form-control" id="username"
+          placeholder="insira seu usuário">
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input [(ngModel)]="user.password" name="password" type="password" required class="form-control" id="password"
+          placeholder="insira sua senha">
+      </div>
+      <div class="d-flex justify-content-around pb-3">
+        <button type="submit" class="btn btn-success">Entrar</button>
+        <a [routerLink]="['/']" class="btn btn-danger">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>

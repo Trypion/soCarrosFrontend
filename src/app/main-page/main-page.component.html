@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Bem vindo ao SóCarros</h1>
+      <p class="lead">
+        Veja nossos incríveis carros!
+      </p>
+      <p>
+        <a class="btn btn-primary btn-lg" routerLink="/new">Adicionar carro</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Nossos carros mais populares!</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 pb-3 d-flex align-items-stretch border-dark" *ngFor="let car of cars">
+      <div class="card bg-light">
+        <img alt="Card image cap" class="card-img-top" src="{{car.imagem}}" alt="Card image cap">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{car.modelo}}</h5>
+          <a [routerLink]="['/show',car.id]" class="btn btn-primary">Informações</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Cor</th>
+      <th scope="col">Preço</th>
+      <th scope="col">ano</th>
+      <th scope="col">descricao</th>
+      <th scope="col">imagem</th>
+      <th scope="col">criado em</th>
+      <th scope="col">atualizado em</th>
+      <th scope="col">Vendido</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{car.id}}</td>
+      <td>{{car.modelo}}</td>
+      <td>{{car.cor}}</td>
+      <td>{{car.preco | currency}}</td>
+      <td>{{car.ano}}</td>
+      <td>{{car.descricao}}</td>
+      <td><a href="{{car.imagem}}">imagem</a></td>
+      <td>{{car.createdAt}}</td>
+      <td>{{car.updatedAt}}</td>
+      <td>{{car.vendido}}</td>
+    </tr>
+  </tbody>
+</table>
+ -->
