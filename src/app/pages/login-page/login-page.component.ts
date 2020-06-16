@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { AlertService } from 'src/app/components/_alert';
 
 @Component({
   selector: 'app-login-page',
@@ -13,10 +13,19 @@ import { Location } from '@angular/common';
 export class LoginPageComponent implements OnInit {
   user: User = new User();
 
-
   autenticado: boolean = false;
 
-  constructor(private location: Location, private auth: AuthService, private router: Router) {}
+  constructor(
+    private alertService: AlertService,
+    private location: Location,
+    private auth: AuthService,
+    private router: Router
+  ) {}
+
+  alertOptions = {
+    autoClose: true,
+    keepAfterRouteChange: true,
+  };
 
   ngOnInit(): void {}
 
@@ -25,13 +34,25 @@ export class LoginPageComponent implements OnInit {
   }
 
   cancel() {
-    this.location.back(); 
+    this.location.back();
   }
 
   fazLogin() {
-    this.auth.loginUser(this.user).subscribe(() => {
-      localStorage.setItem('username', this.user.username);
-      this.router.navigateByUrl('/main');
-    });
+    this.auth.loginUser(this.user).subscribe(
+      () => {
+        localStorage.setItem('username', this.user.username);
+        this.alertService.success(
+          'Login realizado com sucesso!',
+          this.alertOptions
+        );
+        this.router.navigateByUrl('/main');
+      },
+      (err) => {
+        this.alertService.err(
+          'Erro: ' + err.status + ' - ' + err.statusText,
+          this.alertOptions
+        );
+      }
+    );
   }
 }

@@ -65,10 +65,10 @@ export class CarService {
       errorMessage = error.error.message + "lado do cliente";
     } else {
       // Erro ocorreu no lado do servidor
-      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}` + 'lado do servidor';
-    }
+      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+    }    
     console.log(errorMessage);
-    return throwError(errorMessage);
+    return throwError(error);
   };
 
 }

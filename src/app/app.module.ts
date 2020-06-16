@@ -16,6 +16,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { AlertModule } from './components/_alert';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AlertModule
   ],
   providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]

@@ -17,11 +17,11 @@
       </ul>
       <ul class="navbar-nav">
 
-        <li *ngIf="!mostraMenu()" class="nav-item"><a class="nav-link"  [routerLink]="['/login']" >Login</a></li>
-        <li *ngIf="!mostraMenu()" class="nav-item"><a class="nav-link" [routerLink]="['/register']" >Registrar</a></li>
+        <li *ngIf="true" class="nav-item"><a class="nav-link"  [routerLink]="['/login']" >Login</a></li>
+        <li *ngIf="true" class="nav-item"><a class="nav-link" [routerLink]="['/register']" >Registrar</a></li>
 
         <li class="nav-item"><a class="nav-link font-weight-bold" *ngIf="atualizaUser()" >{{username}}</a></li>
-        <li *ngIf="mostraMenu()" class="nav-item"><a class="btn nav-link" (click)='logout()'>Logout</a></li>
+        <li *ngIf="true" class="nav-item"><a class="btn nav-link" (click)='logout()'>Logout</a></li>
 
       </ul>
     </div>
