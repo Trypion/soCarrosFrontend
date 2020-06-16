@@ -26,6 +26,7 @@ export class AuthService {
   registerUser(user: User): Observable<User> {
     return this.httpClient.post<User>(this.url, JSON.stringify(user), this.httpOptions).pipe(
       retry(2),
+      tap(val => this.isLoggedIn = true),
       catchError(this.handleError)
     )
   }
@@ -50,6 +51,14 @@ export class AuthService {
 
   getIsAuth(){
     return this.isLoggedIn;
+  }
+
+  //testes
+  teste(): Observable<boolean>{
+    return this.httpClient.get<boolean>(this.url + '/teste', this.httpOptions).pipe(
+      retry(2),      
+      catchError(this.handleError)
+    )
   }
 
   //logout user

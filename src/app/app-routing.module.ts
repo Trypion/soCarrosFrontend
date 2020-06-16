@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { ShowPageComponent } from './show-page/show-page.component';
-import { NewPageComponent } from './new-page/new-page.component';
-import { EditPageComponent } from './edit-page/edit-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ShowPageComponent } from './pages/show-page/show-page.component';
+import { NewPageComponent } from './pages/new-page/new-page.component';
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuardService } from './guard/auth-guard.service';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 const routes: Routes = [  
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'new', component: NewPageComponent, canActivate : [AuthGuardService]},
   { path: 'edit/:id', component: EditPageComponent, canActivate : [AuthGuardService]},
   { path: 'login', component: LoginPageComponent},
+  { path: 'register', component: RegisterPageComponent},
   { path: '**', redirectTo: '/home'}
 ];
 

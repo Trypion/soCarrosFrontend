@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { User } from '../models/user';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-login-page',
@@ -11,14 +13,19 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   user: User = new User();
 
+
   autenticado: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private location: Location, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit(): void {
     this.fazLogin();
+  }
+
+  cancel() {
+    this.location.back(); 
   }
 
   fazLogin() {

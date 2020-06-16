@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { CarService } from './../services/car.service';
-import { Car } from './../models/car';
+import { CarService } from '../../services/car.service';
+import { Car } from '../../models/car';
 
 
 @Component({

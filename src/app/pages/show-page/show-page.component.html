@@ -17,10 +17,11 @@
           <div class="card-text">
             <p>{{car.ano}}</p>
             <p>{{car.descricao}}</p>
-            <p><em>Enviado por UserPlaceholder</em></p>
+            <p><em>Enviado por <label>{{car.author.username}}</label> </em></p>
+            
           </div>
           <a [routerLink]="['/edit',car.id]" class="btn btn-warning btn-sm">Editar</a>
-          <button class="d-inline btn btn-danger btn-sm" (click)="deleteCar(car)">Deletar</button>
+          <button class="d-inline btn btn-danger btn-sm ml-2" (click)="deleteCar(car)">Deletar</button>
         </div>
       </div>
       <div class="card bg-light mb-4">
@@ -38,7 +39,7 @@
               </p>
               <a href="#/edit" class="btn btn-sm btn-warning">Editar</a>
               <form class="d-inline" action="/?_method=DELETE" method="POST">
-                <button class="btn btn-sm btn-danger">Deletar</button>
+                <button class="btn btn-sm btn-danger ml-2">Deletar</button>
               </form>
             </div>
           </div>
@@ -47,3 +48,5 @@
     </div>
   </div>
 </div>
+
+<!-- <button (click)='teste()' >teste</button> -->
