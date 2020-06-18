@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit {
   fazLogin() {
     this.auth.loginUser(this.user).subscribe(
       () => {
-        localStorage.setItem('username', this.user.username);
+        sessionStorage.setItem('username', this.user.username);
         this.alertService.success(
           'Login realizado com sucesso!',
           this.alertOptions

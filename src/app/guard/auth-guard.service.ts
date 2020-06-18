@@ -28,7 +28,17 @@ export class AuthGuardService {
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
 
-    return this.auth.loggedIn();
+    if(!(sessionStorage.getItem("isLoggedIn")) || sessionStorage.getItem("isLoggedIn") === 'false'){
+      this.alertService.warn(
+        'Você precisa fazer o login para acessar essa pagina!',
+        this.options
+      );
+      this.router.navigateByUrl('/login');
+      return false;
+    }
+
+    return true;
+    
 
   }
 

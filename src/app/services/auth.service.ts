@@ -41,7 +41,7 @@ export class AuthService {
       .post<User>(this.url, JSON.stringify(user), this.httpOptions)
       .pipe(
         retry(2),
-        tap((val) => (this.isLoggedIn = true)),
+        tap((val) => {sessionStorage.setItem("isLoggedIn", "true")}),
         catchError(this.handleError)
       );
   }
@@ -56,7 +56,7 @@ export class AuthService {
       )
       .pipe(
         retry(2),
-        tap((val) => (this.isLoggedIn = true)),
+        tap((val) => {sessionStorage.setItem("isLoggedIn", "true")}),
         catchError(this.handleError)
       );
   }
@@ -67,7 +67,7 @@ export class AuthService {
       .get<boolean>(this.url + '/logout', this.httpOptions)
       .pipe(
         retry(2),
-        tap((val) => (this.isLoggedIn = false)),
+        tap((val) => {sessionStorage.setItem("isLoggedIn", "false")}),
         catchError(this.handleError)
       );
   }
@@ -87,7 +87,13 @@ export class AuthService {
   loggedIn(): Observable<any> {
     return this.httpClient
       .get<any>(this.url + '/isLoggedIn', this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
+      .pipe(retry(2),
+      tap((val) => {
+        sessionStorage.setItem("userId", val.id);
+        sessionStorage.setItem("username", val.username);
+        sessionStorage.setItem("isLoggedIn", val.isLoggedIn);
+      }),     
+      catchError(this.handleError));
   }
 
   //error handler

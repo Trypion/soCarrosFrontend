@@ -7,7 +7,7 @@ export class Car {
     descricao: String;
     imagem: String;
     vendido: Boolean;
-    author = {
+    author: {
         id: String,
         username: String,            
     };

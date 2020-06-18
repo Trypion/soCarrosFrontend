@@ -20,6 +20,7 @@ export class ShowPageComponent implements OnInit {
     private carService: CarService
   ) {}
 
+  username: String;
   id: string;
   car: Car = new Car();
 
@@ -32,13 +33,13 @@ export class ShowPageComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
-
     this.getCarById();
   }
 
   getCarById() {
     this.carService.getCarById(this.id).subscribe((carAux: Car) => {
       this.car = carAux;
+      this.username = carAux.author.username;
     });
   }
 
@@ -60,9 +61,15 @@ export class ShowPageComponent implements OnInit {
     );
   }
 
-  teste() {
-    this.auth.teste().subscribe(() => {
-      console.log('teste');
-    });
+  
+  showButtons(){
+    if (sessionStorage.getItem("userId") === this.car.author.id){      
+      return true;
+    }
+    return false;
   }
+
+  teste() {    
+  }
+  
 }

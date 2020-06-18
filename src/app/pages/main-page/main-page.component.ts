@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../models/car';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main-page',
@@ -12,10 +13,13 @@ export class MainPageComponent implements OnInit {
   car: Car = new Car();
   cars: Car[];
 
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.getCars();
+    this.auth.loggedIn().subscribe(() =>{
+      
+    });
   }
 
   getCars(){

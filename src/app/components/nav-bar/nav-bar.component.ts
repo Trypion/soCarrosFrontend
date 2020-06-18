@@ -23,9 +23,7 @@ export class NavBarComponent implements OnInit {
   ) {}
 
   _isAuthenticated: boolean;
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   options = {
     autoClose: true,
@@ -36,22 +34,24 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.auth.logoutUser().subscribe(() => {
       this.alertService.success('Logout realizado com sucesso!', this.options);
-      localStorage.removeItem('username');
+      sessionStorage.removeItem('username');
       this.router.navigateByUrl('/main');
     });
   }
 
-  //checa se tem um nome de usuario no localstorage se tiver mostra o nome na navbar
-  atualizaUser() {    
-    this.username = localStorage.getItem('username');
-    return !(localStorage.getItem('username') === null);
+  //checa se tem um nome de usuario no sessionStorage se tiver mostra o nome na navbar
+  atualizaUser() {
+    this.username = sessionStorage.getItem('username');
+    return !(sessionStorage.getItem('username') === null);
   }
 
   //esconde os botoes de login/logout conforme o usuario esta logado ou nao
-  async mostraMenu() {
-    console.log(this.auth.loggedIn())
+  mostrarMenu() {
+    if(!(sessionStorage.getItem("isLoggedIn")) || sessionStorage.getItem("isLoggedIn") === 'false'){
+      return false;
+    }
+
     return true;
-    //return await this.auth.loggedIn();
   }
 
   //esconde a navbar na rota

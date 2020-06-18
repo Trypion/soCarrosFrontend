@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="card bg-light mb-4">
+      <div class="card bg-light mb-4 shadow">
         <img class="card-img-top" src="{{car.imagem}}" alt="Card image cap">
         <div class="card-body">
           <h4 class="float-right">R{{car.preco | currency}}</h4>
@@ -17,11 +17,11 @@
           <div class="card-text">
             <p>{{car.ano}}</p>
             <p>{{car.descricao}}</p>
-            <p><em>Enviado por <label>{{car.author.username}}</label> </em></p>
+            <p><em>Enviado por <strong>{{username}}</strong> </em></p>
             
           </div>
-          <a [routerLink]="['/edit',car.id]" class="btn btn-warning btn-sm">Editar</a>
-          <button class="d-inline btn btn-danger btn-sm ml-2" (click)="deleteCar(car)">Deletar</button>
+          <a *ngIf="showButtons()" [routerLink]="['/edit',car.id]" class="btn btn-warning btn-sm">Editar</a>
+          <button *ngIf="showButtons()" class="d-inline btn btn-danger btn-sm ml-2" (click)="deleteCar(car)">Deletar</button>
         </div>
       </div>
       <!-- <div class="card bg-light mb-4">
