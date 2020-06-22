@@ -16,7 +16,7 @@ export class AuthService {
   private isLoggedIn = false;
 
   // url do webservice
-  url = 'http://localhost:8080/api/user';
+  url = 'http://localhost:3000/api/user';
 
   constructor(
     private alertService: AlertService,
